@@ -1,0 +1,68 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.1.1
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/lmizrahi/etas:
+      branch: main
+      repo: https://github.com/lmizrahi/etas.git
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/lmizrahi/etas git:
+        commands:
+        - /usr/bin/env sh .sqa/script.slimy-chocolate-chin.sh
+        container: qc.acc_crappy-ochre-nightingale
+  QC.Doc:
+    repos:
+      github.com/lmizrahi/etas find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.snippy-chocolate-mongoose.sh
+        container: qc.doc_snazzy-turquoise-gar
+      github.com/lmizrahi/etas git:
+        commands:
+        - /usr/bin/env sh .sqa/script.seedy-carmine-sheep.sh
+        container: qc.doc_tacky-red-earwig
+      github.com/lmizrahi/etas markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.homely-fuchsia-chicken.sh
+        container: qc.doc_wheezy-dandelion-birman
+  QC.Lic:
+    repos:
+      github.com/lmizrahi/etas licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.hilly-chartreuse-bear.sh
+        container: qc.lic_paltry-russet-hyena
+  QC.Sec:
+    repos:
+      github.com/lmizrahi/etas bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.boozy-cyan-hummingbird.sh
+        container: qc.sec_breezy-teal-buzzard
+  QC.Sty:
+    repos:
+      github.com/lmizrahi/etas flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.lanky-chocolate-nightingale.sh
+        container: qc.sty_slaphappy-dandelion-dugong
+      github.com/lmizrahi/etas jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.slaphappy-eggplant-fowl.sh
+        container: qc.sty_woozy-flax-setter
+  QC.Uni:
+    repos:
+      github.com/lmizrahi/etas pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.snoopy-violet-shrew.sh
+        container: qc.uni_messy-lavender-termite
+  QC.Ver:
+    repos:
+      github.com/lmizrahi/etas get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.muzzy-red-dunker.sh
+        container: qc.ver_gimpy-pear-manatee
+timeout: 5400
