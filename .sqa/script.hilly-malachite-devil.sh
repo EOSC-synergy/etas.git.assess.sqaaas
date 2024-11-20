@@ -5,5 +5,5 @@
 
 (
 cd github.com/lmizrahi/etas &&
-    mdl --json .
+    licensee detect . --confidence 60 --json 
 )

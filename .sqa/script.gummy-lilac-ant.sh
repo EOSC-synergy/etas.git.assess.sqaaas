@@ -5,5 +5,5 @@
 
 (
 cd github.com/lmizrahi/etas &&
-    git rev-parse --is-inside-work-tree
+    git rev-parse --is-inside-work-tree 
 )
